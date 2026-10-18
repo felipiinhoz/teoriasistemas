@@ -4,7 +4,21 @@
 > **Duração estimada da apresentação:** 15 a 20 minutos (com 5 a 10 minutos para perguntas e respostas).  
 > **Formato dos slides gerados:** 
 > 1. Arquivo PowerPoint editável: [`apresentacao_teoria_sistemica.pptx`](file:///c:/Users/joao%20felipe/Documents/slides/apresentacao_teoria_sistemica.pptx)  
-> 2. Apresentação Web Interativa (abre no navegador): [`apresentacao_interativa.html`](file:///c:/Users/joao%20felipe/Documents/slides/apresentacao_interativa.html)
+> 2. Apresentação Web Pronta para GitHub Pages: [`index.html`](file:///c:/Users/joao%20felipe/Documents/slides/index.html)
+
+---
+
+### 👥 Integrantes da Equipe
+
+1. **Cauê Oliveira Viana** — Matrícula: `202310921`
+2. **Claudio Ávila Rosa Filho** — Matrícula: `202310661`
+3. **Enzo Cardoso Ribeiro** — Matrícula: `202211355`
+4. **Gustavo Moreira dos Santos** — Matrícula: `202310663`
+5. **Iago Campos de Melo** — Matrícula: `202311585`
+6. **João Felipe Santos Matos** — Matrícula: `202310926`
+7. **João Gabryell Lopes Santana** — Matrícula: `202310927`
+8. **Kaike Santos dos Santos** — Matrícula: `202311309`
+9. **Tharcizio Rubens Santos Mota** — Matrícula: `202211373`
 
 ---
 
@@ -12,12 +26,13 @@
 
 | Bloco | Slides | Assunto | Tempo Sugerido |
 | :--- | :--- | :--- | :--- |
-| **Abertura** | Slide 1 & 2 | Capa e Por que estudar o tema | 2 a 3 min |
-| **Fundamentação** | Slide 3 & 4 | Mecanicista vs. Sistêmica e Fluxo Fundamental | 3 a 4 min |
-| **Arquitetura** | Slide 5 & 6 | Níveis Hierárquicos e Princípios Práticos | 3 a 4 min |
-| **Propriedades** | Slide 7 & 8 | Sistemas Abertos e Teóricos Históricos | 3 min |
-| **Aprofundamento** | Slide 9 & 10 | Aberto vs. Fechado e Abordagem Sociotécnica | 3 a 4 min |
-| **Prática & Fechamento**| Slide 11, 12 & 13 | Processo Decisório, Conclusão e Fontes | 2 a 3 min |
+| **Abertura** | Slide 1 & 2 | Capa e Integrantes da Equipe | 1 a 2 min |
+| **Objetivos** | Slide 3 | Por que estudar a Teoria Sistêmica | 2 min |
+| **Fundamentação** | Slide 4 & 5 | Mecanicista vs. Sistêmica e Fluxo Fundamental | 3 a 4 min |
+| **Arquitetura** | Slide 6 & 7 | Níveis Hierárquicos e Princípios Práticos | 3 a 4 min |
+| **Propriedades** | Slide 8 & 9 | Sistemas Abertos e Teóricos Históricos | 3 min |
+| **Aprofundamento** | Slide 10 & 11 | Aberto vs. Fechado e Abordagem Sociotécnica | 3 a 4 min |
+| **Prática & Fechamento**| Slide 12, 13 & 14 | Processo Decisório, Conclusão e Fontes | 2 a 3 min |
 
 ---
 
@@ -30,11 +45,19 @@
 * **O que falar:**
   > *"Olá a todos. Hoje vamos discutir um dos pilares mais fundamentais e revolucionários da Administração Moderna: a **Teoria Sistêmica**.*  
   > *Durante a maior parte do século XX, as empresas eram gerenciadas sob uma lógica fragmentada: cada setor era visto como uma engrenagem isolada em uma máquina fabril. A Teoria Sistêmica veio quebrar essa ilusão, ensinando que organizações não são máquinas estáticas, mas **sistemas vivos, interdependentes e abertos**, que só prosperam através de trocas contínuas com o meio ambiente."*
-* **Dica de Oratória:** Mantenha postura ereta e contato visual com diferentes partes da sala. Não leia a tela; use o slide como âncora visual.
 
 ---
 
-### **Slide 2: Por que Estudar a Teoria Sistêmica?**
+### **Slide 2: Integrantes da Equipe**
+* **Objetivo do Slide:** Apresentar formalmente os acadêmicos responsáveis pela pesquisa e apresentação.
+* **O que falar:**
+  > *"Esta pesquisa e apresentação foram desenvolvidas pela nossa equipe acadêmica composta por: Cauê Oliveira Viana, Claudio Ávila Rosa Filho, Enzo Cardoso Ribeiro, Gustavo Moreira dos Santos, Iago Campos de Melo, João Felipe Santos Matos, João Gabryell Lopes Santana, Kaike Santos dos Santos e Tharcizio Rubens Santos Mota.*  
+  > *Agradecemos a atenção do professor e dos colegas e damos início ao detalhamento do nosso estudo."*
+* **Tempo sugerido:** 30 segundos a 1 minuto.
+
+---
+
+### **Slide 3: Por que Estudar a Teoria Sistêmica? (Objetivos)**
 * **Objetivo do Slide:** Apresentar a relevância prática e contemporânea do tema para a liderança.
 * **O que falar:**
   > *"Por que essa teoria continua tão crucial hoje? Por três razões fundamentais:*  

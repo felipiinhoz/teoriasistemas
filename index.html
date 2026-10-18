@@ -124,6 +124,8 @@
       width: 100%;
       max-width: 1300px;
       padding: 16px;
+      position: relative;
+      transition: all 0.3s ease;
     }
 
     .slide-aspect-box {
@@ -136,8 +138,165 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      container-type: inline-size;
+      transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
     }
 
+    /* TRUE FULLSCREEN PRESENTATION MODE */
+    body.is-fullscreen {
+      overflow: hidden !important;
+      background-color: #000000 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    body.is-fullscreen .stage {
+      position: fixed !important;
+      inset: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background-color: #000000 !important;
+      z-index: 50 !important;
+    }
+
+    body.is-fullscreen .slide-aspect-box {
+      width: min(100vw, calc(100vh * (16 / 9))) !important;
+      height: min(100vh, calc(100vw * (9 / 16))) !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+
+    /* Auto-hide top and bottom bars in fullscreen presentation */
+    body.is-fullscreen .top-bar {
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+      z-index: 200;
+    }
+
+    body.is-fullscreen.show-ui .top-bar {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    body.is-fullscreen .bottom-bar {
+      opacity: 0;
+      transform: translateY(100%);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+      z-index: 200;
+    }
+
+    body.is-fullscreen.show-ui .bottom-bar {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Hide mouse cursor when idle in fullscreen */
+    body.is-fullscreen.hide-cursor,
+    body.is-fullscreen.hide-cursor * {
+      cursor: none !important;
+    }
+
+    /* Discreet Exit Button in Fullscreen */
+    .fs-exit-pill {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f1f5f9;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      z-index: 250;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.is-fullscreen.show-ui .fs-exit-pill {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .fs-exit-pill:hover {
+      background: rgba(220, 38, 38, 0.9);
+      border-color: #ef4444;
+      transform: scale(1.03);
+    }
+
+    .fs-exit-pill kbd {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    /* Navigation Hover Arrows */
+    .fs-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 84px;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 60;
+      transition: all 0.25s ease;
+      opacity: 0;
+      user-select: none;
+    }
+
+    .fs-nav-arrow.prev {
+      left: 14px;
+    }
+
+    .fs-nav-arrow.next {
+      right: 14px;
+    }
+
+    .stage:hover .fs-nav-arrow,
+    body.is-fullscreen.show-ui .fs-nav-arrow {
+      opacity: 0.55;
+    }
+
+    .fs-nav-arrow:hover {
+      opacity: 1 !important;
+      background: rgba(13, 148, 136, 0.9);
+      border-color: var(--mint-accent);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    /* Scalable Responsive Typography inside Slide */
     .slide {
       position: absolute;
       inset: 0;
@@ -145,7 +304,7 @@
       visibility: hidden;
       transition: opacity 0.35s ease, transform 0.35s ease;
       transform: scale(0.985);
-      padding: 48px 60px;
+      padding: clamp(26px, 3.2cqw, 52px);
       display: flex;
       flex-direction: column;
       background: var(--bg-light);
@@ -163,51 +322,48 @@
       color: var(--text-white);
     }
 
-    /* Common Slide Elements */
     .slide-category {
-      font-size: 0.85rem;
+      font-size: clamp(0.72rem, 0.95cqw, 1rem);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--primary-teal);
-      margin-bottom: 8px;
-    }
-
-    .slide-category.mint {
-      color: var(--mint-accent);
+      margin-bottom: 6px;
     }
 
     .slide-title {
-      font-size: 2.1rem;
+      font-size: clamp(1.6rem, 2.3cqw, 2.7rem);
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 28px;
+      margin-bottom: clamp(14px, 1.8cqw, 24px);
       letter-spacing: -0.5px;
       line-height: 1.15;
     }
 
-    .slide.dark-theme .slide-title {
-      color: var(--text-white);
-    }
-
+    /* Proportional Slide Content & Cards (No unnatural stretching) */
     .slide-content {
       flex: 1;
       display: flex;
-      align-items: stretch;
-      gap: 24px;
+      align-items: center; /* Centers cards vertically; preserves balanced proportions */
+      justify-content: center;
+      gap: clamp(14px, 1.8cqw, 24px);
+      width: 100%;
+      max-height: 100%;
     }
 
-    /* Card styling */
     .card {
       background: var(--card-light);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 24px;
+      border-radius: clamp(10px, 1.1cqw, 16px);
+      padding: clamp(16px, 1.8cqw, 26px);
       display: flex;
       flex-direction: column;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
       flex: 1;
       position: relative;
+      height: auto; /* Natural content-based height */
+      max-height: clamp(340px, 60cqh, 480px); /* Keeps sleek, proportionate bounds */
+      justify-content: flex-start;
     }
 
     .card.highlight-dark {
@@ -221,16 +377,16 @@
     }
 
     .card-icon {
-      width: 48px;
-      height: 48px;
+      width: clamp(36px, 3.2cqw, 48px);
+      height: clamp(36px, 3.2cqw, 48px);
       border-radius: 12px;
       background: var(--green-badge);
       color: var(--green-text);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 16px;
+      font-size: clamp(1.1rem, 1.5cqw, 1.5rem);
+      margin-bottom: 12px;
     }
 
     .card.highlight-dark .card-icon {
@@ -239,10 +395,10 @@
     }
 
     .card-title {
-      font-size: 1.25rem;
+      font-size: clamp(1.05rem, 1.35cqw, 1.45rem);
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .card.highlight-dark .card-title {
@@ -250,10 +406,10 @@
     }
 
     .card-subtitle {
-      font-size: 0.92rem;
+      font-size: clamp(0.8rem, 0.95cqw, 1.05rem);
       font-weight: 600;
       color: var(--primary-teal);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .card.highlight-dark .card-subtitle {
@@ -261,13 +417,75 @@
     }
 
     .card-body {
-      font-size: 0.88rem;
+      font-size: clamp(0.78rem, 0.95cqw, 1.02rem);
       color: var(--text-muted);
       line-height: 1.5;
     }
 
     .card.highlight-dark .card-body {
       color: var(--text-light-gray);
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: clamp(12px, 1.2cqw, 18px);
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      align-content: center;
+    }
+
+    .team-member-card {
+      background: white;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: clamp(12px, 1.2cqw, 18px);
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 1cqw, 14px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      height: auto;
+    }
+
+    .team-member-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-teal);
+    }
+
+    .avatar-initials {
+      width: clamp(36px, 3.2cqw, 46px);
+      height: clamp(36px, 3.2cqw, 46px);
+      border-radius: 50%;
+      background: var(--green-badge);
+      color: var(--green-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: clamp(0.85rem, 1cqw, 1.05rem);
+      flex-shrink: 0;
+    }
+
+    .member-info h4 {
+      font-size: clamp(0.85rem, 1.05cqw, 1.1rem);
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .member-reg {
+      display: inline-block;
+      background: var(--blue-badge);
+      color: var(--blue-text);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: clamp(0.68rem, 0.8cqw, 0.82rem);
+      font-weight: 700;
+      letter-spacing: 0.3px;
     }
 
     /* Pill Badges */
@@ -280,6 +498,21 @@
       letter-spacing: 0.5px;
       margin-bottom: 12px;
       align-self: flex-start;
+    }
+
+    .pill.red {
+      background: var(--red-badge);
+      color: var(--red-text);
+    }
+
+    .pill.green {
+      background: var(--green-badge);
+      color: var(--green-text);
+    }
+
+    .pill.blue {
+      background: var(--blue-badge);
+      color: var(--blue-text);
     }
 
     .pill.red {
@@ -441,7 +674,7 @@
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--primary-teal), var(--mint-accent));
-      width: 8%;
+      width: 7%;
       transition: width 0.3s ease;
     }
 
@@ -552,7 +785,7 @@
   <header class="top-bar">
     <div class="title">
       <span>Teoria Sistêmica na Administração</span>
-      <span class="badge-deck">13 Slides</span>
+      <span class="badge-deck">14 Slides</span>
     </div>
     <div class="controls-group">
       <button class="btn-ctrl" id="btnNotes" onclick="toggleNotes()" title="Atalhos: Tecla S">
@@ -570,9 +803,19 @@
     </div>
   </header>
 
+  <!-- Discreet Floating Exit Button in Fullscreen -->
+  <button id="fsExitBtn" class="fs-exit-pill" onclick="toggleFullscreen()" title="Sair da Tela Cheia [ESC ou F]">
+    <span>✕ Sair da Tela Cheia</span>
+    <kbd>ESC</kbd>
+  </button>
+
   <!-- Stage -->
-  <main class="stage">
-    <div class="slide-aspect-box">
+  <main class="stage" id="presentationStage">
+    <!-- Navigation Hover Arrows -->
+    <button class="fs-nav-arrow prev" onclick="prevSlide()" title="Slide Anterior (Seta Esquerda)">❮</button>
+    <button class="fs-nav-arrow next" onclick="nextSlide()" title="Próximo Slide (Seta Direita / Espaço)">❯</button>
+
+    <div class="slide-aspect-box" id="slideBox">
 
       <!-- SLIDE 1: Capa -->
       <section class="slide dark-theme active" data-index="1" data-title="Capa: Teoria Sistêmica na Administração">
@@ -595,8 +838,85 @@
         </div>
       </section>
 
-      <!-- SLIDE 2: Objetivos de Aprendizagem -->
-      <section class="slide" data-index="2" data-title="Por que Estudar a Teoria Sistêmica?">
+      <!-- SLIDE 2: Integrantes da Equipe -->
+      <section class="slide" data-index="2" data-title="Integrantes da Equipe">
+        <div class="slide-category">ADMINISTRAÇÃO GERAL &bull; ESTRUTURA ACADÊMICA</div>
+        <h2 class="slide-title">Integrantes da Equipe</h2>
+        <div class="team-grid">
+          <div class="team-member-card">
+            <div class="avatar-initials">CV</div>
+            <div class="member-info">
+              <h4>Cauê Oliveira Viana</h4>
+              <span class="member-reg">Matrícula: 202310921</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">CA</div>
+            <div class="member-info">
+              <h4>Claudio Ávila Rosa Filho</h4>
+              <span class="member-reg">Matrícula: 202310661</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">EC</div>
+            <div class="member-info">
+              <h4>Enzo Cardoso Ribeiro</h4>
+              <span class="member-reg">Matrícula: 202211355</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">GS</div>
+            <div class="member-info">
+              <h4>Gustavo Moreira dos Santos</h4>
+              <span class="member-reg">Matrícula: 202310663</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">IM</div>
+            <div class="member-info">
+              <h4>Iago Campos de Melo</h4>
+              <span class="member-reg">Matrícula: 202311585</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">JF</div>
+            <div class="member-info">
+              <h4>João Felipe Santos Matos</h4>
+              <span class="member-reg">Matrícula: 202310926</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">JG</div>
+            <div class="member-info">
+              <h4>João Gabryell Lopes Santana</h4>
+              <span class="member-reg">Matrícula: 202310927</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">KS</div>
+            <div class="member-info">
+              <h4>Kaike Santos dos Santos</h4>
+              <span class="member-reg">Matrícula: 202311309</span>
+            </div>
+          </div>
+          <div class="team-member-card">
+            <div class="avatar-initials">TR</div>
+            <div class="member-info">
+              <h4>Tharcizio Rubens Santos Mota</h4>
+              <span class="member-reg">Matrícula: 202211373</span>
+            </div>
+          </div>
+        </div>
+        <div class="notes-content" style="display: none;">
+          <strong>[ROTEIRO DE FALA - SLIDE 2]</strong><br>
+          • "Apresentação dos componentes do grupo acadêmico: Cauê Oliveira Viana, Claudio Ávila Rosa Filho, Enzo Cardoso Ribeiro, Gustavo Moreira dos Santos, Iago Campos de Melo, João Felipe Santos Matos, João Gabryell Lopes Santana, Kaike Santos dos Santos e Tharcizio Rubens Santos Mota."<br>
+          • "Agradecemos a presença do professor e dos colegas e damos início ao detalhamento dos objetivos."<br>
+          • <strong>Tempo:</strong> 30s a 1 min.
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Objetivos de Aprendizagem -->
+      <section class="slide" data-index="3" data-title="Por que Estudar a Teoria Sistêmica?">
         <div class="slide-category">OBJETIVOS DE APRENDIZAGEM</div>
         <h2 class="slide-title">Por que Estudar a Teoria Sistêmica?</h2>
         <div class="slide-content">
@@ -620,7 +940,7 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 2]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 3]</strong><br>
           • "Por que esse tema é obrigatório para gestores e líderes?"<br>
           • "1. Holismo: 'Holos' significa todo. Superamos a miopia funcional."<br>
           • "2. Interdependência: Cada departamento depende do outro. Decisões pontuais mal avaliadas geram efeitos colaterais graves."<br>
@@ -629,8 +949,8 @@
         </div>
       </section>
 
-      <!-- SLIDE 3: Abordagem Sistêmica vs Tradicional -->
-      <section class="slide" data-index="3" data-title="Abordagem Sistêmica vs. Tradicional">
+      <!-- SLIDE 4: Abordagem Sistêmica vs Tradicional -->
+      <section class="slide" data-index="4" data-title="Abordagem Sistêmica vs. Tradicional">
         <div class="slide-category">TÓPICO 1 &bull; RELAÇÃO TEÓRICA</div>
         <h2 class="slide-title">Abordagem Sistêmica na Administração Geral</h2>
         <div class="slide-content">
@@ -690,7 +1010,7 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 3]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 4]</strong><br>
           • "Aqui vemos a grande virada de chave histórica."<br>
           • "Na abordagem tradicional (Taylor, Fayol, Ford), a empresa era vista como uma engrenagem de relógio. Bastava afinar cada peça."<br>
           • "A abordagem sistêmica mostrou que somar departamentos eficientes isoladamente não garante o sucesso da empresa se eles não dialogarem."<br>
@@ -698,33 +1018,33 @@
         </div>
       </section>
 
-      <!-- SLIDE 4: Fluxo Fundamental de um Sistema -->
-      <section class="slide" data-index="4" data-title="O Fluxo Fundamental de um Sistema">
+      <!-- SLIDE 5: Fluxo Fundamental de um Sistema -->
+      <section class="slide" data-index="5" data-title="O Fluxo Fundamental de um Sistema">
         <div class="slide-category">TÓPICO 2 &bull; ASPECTOS BÁSICOS</div>
         <h2 class="slide-title">O Fluxo Fundamental de um Sistema</h2>
-        <div class="slide-content" style="align-items: center;">
-          <div class="card" style="height: 100%;">
+        <div class="slide-content" style="align-items: center; max-width: 1200px; margin: auto;">
+          <div class="card">
             <div class="card-icon">📥</div>
             <h3 class="card-title">Entradas</h3>
             <div class="card-subtitle">Insumos e Dados</div>
             <p class="card-body">Matérias-primas, capital financeiro, talentos humanos, informações e demandas recebidas do ambiente externo.</p>
           </div>
           <div class="flow-arrow">➔</div>
-          <div class="card" style="height: 100%;">
+          <div class="card">
             <div class="card-icon">⚙️</div>
             <h3 class="card-title">Processamento</h3>
             <div class="card-subtitle">Transformação Interna</div>
             <p class="card-body">Operações industriais, linhas de montagem, algoritmos, decisões gerenciais e fluxos de trabalho produtivos.</p>
           </div>
           <div class="flow-arrow">➔</div>
-          <div class="card" style="height: 100%;">
+          <div class="card">
             <div class="card-icon">📤</div>
             <h3 class="card-title">Saídas</h3>
             <div class="card-subtitle">Resultados & Valor</div>
             <p class="card-body">Produtos finais, serviços prestados, geração de receita, dividendos, impacto ambiental e reputação.</p>
           </div>
           <div class="flow-arrow">➔</div>
-          <div class="card highlight-dark" style="height: 100%;">
+          <div class="card highlight-dark">
             <div class="card-icon">🔄</div>
             <h3 class="card-title">Feedback</h3>
             <div class="card-subtitle">Retroalimentação</div>
@@ -732,44 +1052,44 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 4]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 5]</strong><br>
           • "Todo sistema dinâmico se baseia neste ciclo de 4 etapas."<br>
           • "Atenção especial ao Feedback (em destaque no cartão escuro): é ele que garante a autorregulação. Se o cliente rejeita o produto (saída), o feedback entra imediatamente como novo dado de entrada para corrigir a transformação."<br>
           • <strong>Tempo:</strong> 1m30s.
         </div>
       </section>
 
-      <!-- SLIDE 5: Hierarquização de Sistemas -->
-      <section class="slide" data-index="5" data-title="Hierarquização de Sistemas">
+      <!-- SLIDE 6: Hierarquização de Sistemas -->
+      <section class="slide" data-index="6" data-title="Hierarquização de Sistemas">
         <div class="slide-category">TÓPICO 3 &bull; ESTRUTURA DE NÍVEIS</div>
         <h2 class="slide-title">Hierarquização de Sistemas</h2>
-        <div class="slide-content" style="flex-direction: column; justify-content: space-around;">
-          <div class="card" style="flex-direction: row; align-items: center; justify-content: space-between; border-left: 6px solid var(--text-main);">
+        <div class="slide-content" style="flex-direction: column; justify-content: center; gap: clamp(14px, 1.8cqw, 22px); max-width: 1050px; margin: auto; width: 100%;">
+          <div class="card" style="flex-direction: row; align-items: center; justify-content: space-between; border-left: 6px solid var(--text-main); width: 100%; min-height: 84px;">
             <div>
               <h3 class="card-title" style="margin-bottom: 6px;">Supersistema (Suprasistema)</h3>
               <p class="card-body" style="font-size: 0.95rem;">Ambiente externo abrangente, mercado competitivo, políticas públicas, sociedade e contexto socioeconômico.</p>
             </div>
-            <span class="pill blue" style="font-size: 0.85rem; padding: 6px 16px; margin: 0;">Nível Macro</span>
+            <span class="pill blue" style="font-size: 0.85rem; padding: 6px 16px; margin: 0; flex-shrink: 0;">Nível Macro</span>
           </div>
 
-          <div class="card" style="flex-direction: row; align-items: center; justify-content: space-between; border-left: 6px solid var(--primary-teal);">
+          <div class="card" style="flex-direction: row; align-items: center; justify-content: space-between; border-left: 6px solid var(--primary-teal); width: 100%; min-height: 84px;">
             <div>
               <h3 class="card-title" style="margin-bottom: 6px;">Sistema</h3>
               <p class="card-body" style="font-size: 0.95rem;">A organização ou empresa considerada em sua totalidade focal, cultura, governança e identidade corporativa.</p>
             </div>
-            <span class="pill green" style="font-size: 0.85rem; padding: 6px 16px; margin: 0;">Nível Mapeado</span>
+            <span class="pill green" style="font-size: 0.85rem; padding: 6px 16px; margin: 0; flex-shrink: 0;">Nível Mapeado</span>
           </div>
 
-          <div class="card" style="flex-direction: row; align-items: center; justify-content: space-between; border-left: 6px solid var(--text-muted);">
+          <div class="card" style="flex-direction: row; align-items: center; justify-content: space-between; border-left: 6px solid var(--text-muted); width: 100%; min-height: 84px;">
             <div>
               <h3 class="card-title" style="margin-bottom: 6px;">Subsistemas</h3>
               <p class="card-body" style="font-size: 0.95rem;">Departamentos, divisões, setores operacionais, unidades de negócios e equipes internas especializadas.</p>
             </div>
-            <span class="pill blue" style="font-size: 0.85rem; padding: 6px 16px; margin: 0;">Nível Micro</span>
+            <span class="pill blue" style="font-size: 0.85rem; padding: 6px 16px; margin: 0; flex-shrink: 0;">Nível Micro</span>
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 5]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 6]</strong><br>
           • "Este slide ilustra a hierarquia em camadas (efeito matriosca):"<br>
           • "Supersistema: O ecossistema econômico onde a empresa navega."<br>
           • "Sistema: A empresa inteira como entidade única."<br>
@@ -779,12 +1099,12 @@
         </div>
       </section>
 
-      <!-- SLIDE 6: Princípios Práticos -->
-      <section class="slide" data-index="6" data-title="Aplicação dos Conceitos Sistêmicos">
+      <!-- SLIDE 7: Princípios Práticos -->
+      <section class="slide" data-index="7" data-title="Aplicação dos Conceitos Sistêmicos">
         <div class="slide-category">TÓPICO 4 &bull; PRINCÍPIOS PRÁTICOS</div>
         <h2 class="slide-title">Aplicação dos Conceitos Sistêmicos</h2>
-        <div class="slide-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-          <div class="card">
+        <div class="slide-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.6cqw, 24px); align-content: center; max-width: 1100px; margin: auto; width: 100%;">
+          <div class="card" style="height: auto; min-height: 125px;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
               <div class="card-icon" style="margin: 0; width: 40px; height: 40px; font-size: 1.1rem;">⚡</div>
               <div>
@@ -795,7 +1115,7 @@
             <p class="card-body">O resultado do trabalho conjunto e integrado é superior à soma das atuações individuais isoladas.</p>
           </div>
 
-          <div class="card">
+          <div class="card" style="height: auto; min-height: 125px;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
               <div class="card-icon" style="margin: 0; width: 40px; height: 40px; font-size: 1.1rem;">⚖️</div>
               <div>
@@ -806,7 +1126,7 @@
             <p class="card-body">Capacidade de autorregulação e ajuste contínuo frente às perturbações e mudanças ambientais.</p>
           </div>
 
-          <div class="card">
+          <div class="card" style="height: auto; min-height: 125px;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
               <div class="card-icon" style="margin: 0; width: 40px; height: 40px; font-size: 1.1rem;">🔋</div>
               <div>
@@ -817,7 +1137,7 @@
             <p class="card-body">Importação de energia, talentos e inovação externa para reverter a tendência natural de degradação e caos.</p>
           </div>
 
-          <div class="card">
+          <div class="card" style="height: auto; min-height: 125px;">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
               <div class="card-icon" style="margin: 0; width: 40px; height: 40px; font-size: 1.1rem;">🎯</div>
               <div>
@@ -829,7 +1149,7 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 6]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 7]</strong><br>
           • "Quatro conceitos teóricos de enorme aplicação prática:"<br>
           • "Sinergia: Cooperação transversal gera valor exponencial."<br>
           • "Homeostase: Como o corpo humano mantendo a temperatura, a empresa mantém a solidez mesmo em crises."<br>
@@ -839,40 +1159,40 @@
         </div>
       </section>
 
-      <!-- SLIDE 7: Organizações como Sistemas Abertos -->
-      <section class="slide" data-index="7" data-title="Organizações como Sistemas Abertos">
+      <!-- SLIDE 8: Organizações como Sistemas Abertos -->
+      <section class="slide" data-index="8" data-title="Organizações como Sistemas Abertos">
         <div class="slide-category">TÓPICO 5 &bull; PROPRIEDADES ABERTAS</div>
         <h2 class="slide-title">Organizações como Sistemas Abertos</h2>
-        <div class="slide-content">
-          <div style="flex: 1.1; display: flex; flex-direction: column; justify-content: space-between;">
-            <div class="card" style="padding: 16px;">
+        <div class="slide-content" style="align-items: center; max-width: 1150px; margin: auto; width: 100%;">
+          <div style="flex: 1.1; display: flex; flex-direction: column; justify-content: center; gap: clamp(10px, 1.3cqw, 18px);">
+            <div class="card" style="padding: 16px; height: auto;">
               <h3 class="card-title" style="font-size: 1.1rem; color: var(--primary-teal); margin-bottom: 4px;">⊞ Fronteiras Permeáveis</h3>
               <p class="card-body">Troca contínua e bidirecional de informações, insumos e recursos com o ecossistema externo.</p>
             </div>
-            <div class="card" style="padding: 16px;">
+            <div class="card" style="padding: 16px; height: auto;">
               <h3 class="card-title" style="font-size: 1.1rem; color: var(--mint-accent); margin-bottom: 4px;">⚡ Dinamismo Constante</h3>
               <p class="card-body">Reorganização e reciclagem frequente para preservação do equilíbrio frente às incertezas.</p>
             </div>
-            <div class="card" style="padding: 16px;">
+            <div class="card" style="padding: 16px; height: auto;">
               <h3 class="card-title" style="font-size: 1.1rem; color: var(--primary-teal); margin-bottom: 4px;">🌲 Ciclos de Eventos</h3>
               <p class="card-body">A receita gerada no mercado retroalimenta a aquisição de novos insumos e talentos para sobrevivência.</p>
             </div>
           </div>
-          <div style="flex: 0.9;" class="img-box">
+          <div style="flex: 0.9; max-height: clamp(320px, 55cqh, 450px); display: flex; align-items: center; justify-content: center;" class="img-box">
             <img src="./network.png" alt="Rede complexa de interações sistêmicas">
             <div class="caption">Rede de Interconexões: Nós interdependentes e trocas constantes.</div>
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 7]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 8]</strong><br>
           • "A empresa moderna tem fronteiras permeáveis: as paredes dos escritórios caíram e o contato com fornecedores e clientes é instantâneo."<br>
           • "O diagrama de nós na imagem ilustra como um impacto em qualquer variável reverbera por toda a rede."<br>
           • <strong>Tempo:</strong> 1m30s.
         </div>
       </section>
 
-      <!-- SLIDE 8: Principais Teóricos -->
-      <section class="slide" data-index="8" data-title="Principais Teóricos do Pensamento Sistêmico">
+      <!-- SLIDE 9: Principais Teóricos -->
+      <section class="slide" data-index="9" data-title="Principais Teóricos do Pensamento Sistêmico">
         <div class="slide-category">TÓPICO 6 &bull; FUNDAMENTAÇÃO TEÓRICA</div>
         <h2 class="slide-title">Principais Teóricos do Pensamento Sistêmico</h2>
         <div class="slide-content">
@@ -907,7 +1227,7 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 8]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 9]</strong><br>
           • "Quem foram as mentes por trás dessas ideias?"<br>
           • "Bertalanffy forneceu a base científica transdisciplinar."<br>
           • "Churchman transportou a teoria para o planejamento estratégico e a governança corporativa."<br>
@@ -916,8 +1236,8 @@
         </div>
       </section>
 
-      <!-- SLIDE 9: Sistemas Abertos vs Fechados -->
-      <section class="slide" data-index="9" data-title="Sistemas Abertos vs. Sistemas Fechados">
+      <!-- SLIDE 10: Sistemas Abertos vs Fechados -->
+      <section class="slide" data-index="10" data-title="Sistemas Abertos vs. Sistemas Fechados">
         <div class="slide-category">TÓPICO 7 &bull; CLASSIFICAÇÃO</div>
         <h2 class="slide-title">Sistemas Abertos vs. Sistemas Fechados</h2>
         <div class="slide-content">
@@ -948,28 +1268,28 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 9]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 10]</strong><br>
           • "Uma empresa que age como sistema fechado (ignorando clientes ou tecnologia) sofre entropia e quebra."<br>
           • "Sistemas abertos sobrevivem justamente porque são porosos ao ambiente."<br>
           • <strong>Tempo:</strong> 1m30s.
         </div>
       </section>
 
-      <!-- SLIDE 10: Abordagem Sociotécnica -->
-      <section class="slide" data-index="10" data-title="A Abordagem Sociotécnica">
+      <!-- SLIDE 11: Abordagem Sociotécnica -->
+      <section class="slide" data-index="11" data-title="A Abordagem Sociotécnica">
         <div class="slide-category">TÓPICO 8 &bull; ABORDAGEM SOCIOTÉCNICA</div>
         <h2 class="slide-title">A Abordagem Sociotécnica</h2>
-        <div class="slide-content">
-          <div style="flex: 1;" class="img-box">
+        <div class="slide-content" style="align-items: center; max-width: 1150px; margin: auto; width: 100%;">
+          <div style="flex: 1; max-height: clamp(320px, 55cqh, 450px); display: flex; align-items: center; justify-content: center;" class="img-box">
             <img src="./factory.png" alt="Automação industrial e robótica">
             <div class="caption">Fábrica Inteligente: Robótica de ponta integrada ao trabalho humano.</div>
           </div>
-          <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-            <div class="card">
+          <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: clamp(10px, 1.3cqw, 18px);">
+            <div class="card" style="height: auto;">
               <h3 class="card-title" style="color: var(--primary-teal); font-size: 1.25rem;">Subsistema Técnico</h3>
               <p class="card-body">Tecnologia, equipamentos, infraestrutura física, softwares, algoritmos e processos operacionais padronizados.</p>
             </div>
-            <div class="card">
+            <div class="card" style="height: auto;">
               <h3 class="card-title" style="color: var(--mint-accent); font-size: 1.25rem;">Subsistema Social</h3>
               <p class="card-body">Pessoas, relações interpessoais, liderança, cultura organizacional, motivação humana e competências comportamentais.</p>
             </div>
@@ -979,20 +1299,20 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 10]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 11]</strong><br>
           • "Estudo clássico do Tavistock Institute: a introdução de novas máquinas em minas britânicas inicialmente reduziu a produtividade porque desmantelou os laços sociais entre os trabalhadores."<br>
           • "Hoje na era da IA e Indústria 4.0, o princípio é o mesmo: não adianta tecnologia avançada se as pessoas não estiverem capacitadas e motivadas."<br>
           • <strong>Tempo:</strong> 2 minutos.
         </div>
       </section>
 
-      <!-- SLIDE 11: Síntese Prática -->
-      <section class="slide" data-index="11" data-title="Gestão Sistêmica no Processo Decisório">
+      <!-- SLIDE 12: Síntese Prática -->
+      <section class="slide" data-index="12" data-title="Gestão Sistêmica no Processo Decisório">
         <div class="slide-category">SÍNTESE PRÁTICA</div>
         <h2 class="slide-title">Gestão Sistêmica no Processo Decisório</h2>
-        <div class="slide-content">
-          <div style="flex: 1.1; display: flex; flex-direction: column; justify-content: space-around;">
-            <div class="card" style="flex-direction: row; align-items: center; gap: 16px; padding: 16px;">
+        <div class="slide-content" style="align-items: center; max-width: 1150px; margin: auto; width: 100%;">
+          <div style="flex: 1.1; display: flex; flex-direction: column; justify-content: center; gap: clamp(10px, 1.3cqw, 18px);">
+            <div class="card" style="flex-direction: row; align-items: center; gap: 16px; padding: 16px; height: auto;">
               <div style="background: var(--mint-accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0;">✓</div>
               <div>
                 <h4 style="font-size: 1.05rem; margin-bottom: 4px;">Mapeamento Prévio de Impactos</h4>
@@ -1000,7 +1320,7 @@
               </div>
             </div>
 
-            <div class="card" style="flex-direction: row; align-items: center; gap: 16px; padding: 16px;">
+            <div class="card" style="flex-direction: row; align-items: center; gap: 16px; padding: 16px; height: auto;">
               <div style="background: var(--mint-accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0;">✓</div>
               <div>
                 <h4 style="font-size: 1.05rem; margin-bottom: 4px;">Eliminação de Silos Operacionais</h4>
@@ -1008,7 +1328,7 @@
               </div>
             </div>
 
-            <div class="card" style="flex-direction: row; align-items: center; gap: 16px; padding: 16px;">
+            <div class="card" style="flex-direction: row; align-items: center; gap: 16px; padding: 16px; height: auto;">
               <div style="background: var(--mint-accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0;">✓</div>
               <div>
                 <h4 style="font-size: 1.05rem; margin-bottom: 4px;">Alinhamento Dinâmico com o Mercado</h4>
@@ -1017,13 +1337,13 @@
             </div>
           </div>
 
-          <div style="flex: 0.9;" class="img-box">
+          <div style="flex: 0.9; max-height: clamp(320px, 55cqh, 450px); display: flex; align-items: center; justify-content: center;" class="img-box">
             <img src="./cubes.jpg" alt="Decisões sistêmicas conectando pessoas">
             <div class="caption">Liderança Conectada: Articulação sistêmica sem silos funcionais.</div>
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 11]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 12]</strong><br>
           • "Como aplicar amanhã cedo no escritório?"<br>
           • "1. Mapear o efeito cascata de cada projeto."<br>
           • "2. Criar comitês multidisciplinares (acabar com feudos)."<br>
@@ -1032,8 +1352,8 @@
         </div>
       </section>
 
-      <!-- SLIDE 12: Conclusão / Frase de Impacto -->
-      <section class="slide dark-theme" data-index="12" data-title="Conclusão: Vantagem Competitiva">
+      <!-- SLIDE 13: Conclusão / Frase de Impacto -->
+      <section class="slide dark-theme" data-index="13" data-title="Conclusão: Vantagem Competitiva">
         <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; max-width: 900px; margin: 0 auto;">
           <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-teal); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 24px;">
             🎓
@@ -1051,7 +1371,7 @@
           </p>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 12]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 13]</strong><br>
           • "Para finalizar: a Teoria Sistêmica nos ensina que gerenciar não é controlar peças estáticas, mas orquestrar relações vivas."<br>
           • "As empresas que sobrevivem e lideram não são as maiores, mas as que melhor compreendem sua condição de rede viva."<br>
           • "Muito obrigado pela atenção de todos! Abrimos agora para dúvidas e considerações."<br>
@@ -1059,8 +1379,8 @@
         </div>
       </section>
 
-      <!-- SLIDE 13: Fontes e Referências -->
-      <section class="slide" data-index="13" data-title="Fontes & Referências">
+      <!-- SLIDE 14: Fontes e Referências -->
+      <section class="slide" data-index="14" data-title="Fontes & Referências">
         <div class="slide-category">REFERÊNCIAS &bull; LEITURAS RECOMENDADAS</div>
         <h2 class="slide-title">Fontes e Fundamentação Bibliográfica</h2>
         <div class="slide-content">
@@ -1096,7 +1416,7 @@
           </div>
         </div>
         <div class="notes-content" style="display: none;">
-          <strong>[ROTEIRO DE FALA - SLIDE 13]</strong><br>
+          <strong>[ROTEIRO DE FALA - SLIDE 14]</strong><br>
           • "Aqui estão as referências clássicas e contemporâneas citadas ao longo da apresentação para quem desejar aprofundar a pesquisa."
         </div>
       </section>
@@ -1124,7 +1444,7 @@
     <div class="progress-track">
       <div class="progress-fill" id="progressFill"></div>
     </div>
-    <div class="counter-text" id="slideCounter">1 / 13</div>
+    <div class="counter-text" id="slideCounter">1 / 14</div>
   </footer>
 
   <!-- Thumbnails Modal -->
@@ -1202,14 +1522,96 @@
     }
 
     function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-          console.error(err);
-        });
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+      if (!isFs) {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen().catch(err => console.error(err));
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
       } else {
-        document.exitFullscreen();
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(err => console.error(err));
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
       }
     }
+
+    function handleFullscreenChange() {
+      const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+      document.body.classList.toggle('is-fullscreen', isFs);
+      btnFullscreen.classList.toggle('active', isFs);
+      btnFullscreen.innerHTML = isFs ? '⛶ Sair da Tela Cheia [F]' : '⛶ Tela Cheia [F]';
+      if (isFs) {
+        showUIBriefly();
+      } else {
+        document.body.classList.remove('show-ui', 'hide-cursor');
+      }
+    }
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    // Auto-hide UI and cursor during Fullscreen presentation
+    let uiTimeout = null;
+    function showUIBriefly() {
+      if (!document.body.classList.contains('is-fullscreen')) return;
+      document.body.classList.add('show-ui');
+      document.body.classList.remove('hide-cursor');
+      clearTimeout(uiTimeout);
+      uiTimeout = setTimeout(() => {
+        if (document.body.classList.contains('is-fullscreen') && !notesDrawer.classList.contains('open') && !thumbnailsModal.classList.contains('open')) {
+          document.body.classList.remove('show-ui');
+          document.body.classList.add('hide-cursor');
+        }
+      }, 2500);
+    }
+    document.addEventListener('mousemove', showUIBriefly);
+
+    // Optional click on slide to advance / go back (excluding buttons and links)
+    const slideBox = document.getElementById('slideBox');
+    if (slideBox) {
+      slideBox.addEventListener('click', (e) => {
+        if (e.target.closest('button') || e.target.closest('a') || e.target.closest('.notes-drawer')) {
+          return;
+        }
+        const rect = slideBox.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        if (clickX < rect.width * 0.22) {
+          prevSlide();
+        } else {
+          nextSlide();
+        }
+      });
+    }
+
+    // Touch swipe support for tablets / touch screens
+    let touchStartX = 0;
+    let touchEndX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 50) {
+        nextSlide();
+      }
+      if (touchEndX > touchStartX + 50) {
+        prevSlide();
+      }
+    }, false);
 
     // Populate thumbnails
     slides.forEach((s, idx) => {
@@ -1225,10 +1627,10 @@
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
         e.preventDefault();
         nextSlide();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
         e.preventDefault();
         prevSlide();
       } else if (e.key === 'Home') {
@@ -1244,9 +1646,13 @@
         e.preventDefault();
         toggleThumbnails();
       } else if (e.key === 'Escape') {
-        thumbnailsModal.classList.remove('open');
-        notesDrawer.classList.remove('open');
-        btnNotes.classList.remove('active');
+        if (thumbnailsModal.classList.contains('open') || notesDrawer.classList.contains('open')) {
+          thumbnailsModal.classList.remove('open');
+          notesDrawer.classList.remove('open');
+          btnNotes.classList.remove('active');
+        } else if (document.body.classList.contains('is-fullscreen')) {
+          toggleFullscreen();
+        }
       } else if (e.key.toLowerCase() === 'f') {
         e.preventDefault();
         toggleFullscreen();

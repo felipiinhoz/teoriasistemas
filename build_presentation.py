@@ -128,7 +128,91 @@ def create_deck():
 Tempo estimado: 1 a 2 minutos.""")
 
     # ==========================================
-    # SLIDE 2: Objetivos de Aprendizagem
+    # SLIDE 2: Integrantes da Equipe
+    # ==========================================
+    s_team = prs.slides.add_slide(blank_layout)
+    set_slide_background(s_team, COLOR_BG_LIGHT)
+    add_header(s_team, "Administração Geral  •  Estrutura Acadêmica", "Integrantes da Equipe")
+
+    team_members = [
+        ("Cauê Oliveira Viana", "202310921", "CV"),
+        ("Claudio Ávila Rosa Filho", "202310661", "CA"),
+        ("Enzo Cardoso Ribeiro", "202211355", "EC"),
+        ("Gustavo Moreira dos Santos", "202310663", "GS"),
+        ("Iago Campos de Melo", "202311585", "IM"),
+        ("João Felipe Santos Matos", "202310926", "JF"),
+        ("João Gabryell Lopes Santana", "202310927", "JG"),
+        ("Kaike Santos dos Santos", "202311309", "KS"),
+        ("Tharcizio Rubens Santos Mota", "202211373", "TR")
+    ]
+
+    card_m_w = Inches(3.68)
+    card_m_h = Inches(1.35)
+    gap_m_x = Inches(0.35)
+    gap_m_y = Inches(0.25)
+    start_m_x = Inches(0.8)
+    start_m_y = Inches(1.85)
+
+    for idx, (m_name, m_mat, initials) in enumerate(team_members):
+        row = idx // 3
+        col = idx % 3
+        mx = start_m_x + col * (card_m_w + gap_m_x)
+        my = start_m_y + row * (card_m_h + gap_m_y)
+
+        # Card container
+        m_card = s_team.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, mx, my, card_m_w, card_m_h)
+        m_card.fill.solid()
+        m_card.fill.fore_color.rgb = COLOR_CARD_LIGHT
+        m_card.line.color.rgb = COLOR_CARD_BORDER
+        m_card.line.width = Pt(1.5)
+
+        # Initials circle avatar
+        avatar = s_team.shapes.add_shape(MSO_SHAPE.OVAL, mx + Inches(0.25), my + Inches(0.3), Inches(0.75), Inches(0.75))
+        avatar.fill.solid()
+        avatar.fill.fore_color.rgb = COLOR_GREEN_BADGE
+        avatar.line.fill.background()
+        tf_av = avatar.text_frame
+        p_av = tf_av.paragraphs[0]
+        p_av.text = initials
+        p_av.font.name = FONT_HEADING
+        p_av.font.size = Pt(13)
+        p_av.font.bold = True
+        p_av.font.color.rgb = COLOR_GREEN_TEXT
+        p_av.alignment = PP_ALIGN.CENTER
+
+        # Member Name
+        nb = s_team.shapes.add_textbox(mx + Inches(1.15), my + Inches(0.2), card_m_w - Inches(1.3), Inches(0.45))
+        tf_nb = nb.text_frame
+        tf_nb.word_wrap = True
+        tf_nb.margin_left = tf_nb.margin_right = tf_nb.margin_top = tf_nb.margin_bottom = 0
+        p_nb = tf_nb.paragraphs[0]
+        p_nb.text = m_name
+        p_nb.font.name = FONT_HEADING
+        p_nb.font.size = Pt(14)
+        p_nb.font.bold = True
+        p_nb.font.color.rgb = COLOR_TEXT_MAIN
+
+        # Member Registration (Matrícula)
+        mb = s_team.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, mx + Inches(1.15), my + Inches(0.72), Inches(2.2), Inches(0.32))
+        mb.fill.solid()
+        mb.fill.fore_color.rgb = COLOR_TEAL_BADGE
+        mb.line.fill.background()
+        p_mb = mb.text_frame.paragraphs[0]
+        p_mb.text = f"Matrícula: {m_mat}"
+        p_mb.font.name = FONT_BODY
+        p_mb.font.size = Pt(10)
+        p_mb.font.bold = True
+        p_mb.font.color.rgb = COLOR_TEAL_BADGE_TEXT
+        p_mb.alignment = PP_ALIGN.CENTER
+
+    set_speaker_notes(s_team, """[ROTEIRO DE FALA - SLIDE 2: INTEGRANTES DA EQUIPE]
+- Apresentação dos integrantes do grupo de trabalho:
+  Cauê Oliveira Viana, Claudio Ávila Rosa Filho, Enzo Cardoso Ribeiro, Gustavo Moreira dos Santos, Iago Campos de Melo, João Felipe Santos Matos, João Gabryell Lopes Santana, Kaike Santos dos Santos e Tharcizio Rubens Santos Mota.
+- Agradecemos ao professor e aos colegas pela presença e daremos início à exposição teórica.
+Tempo estimado: 30 segundos a 1 minuto.""")
+
+    # ==========================================
+    # SLIDE 3: Objetivos de Aprendizagem
     # ==========================================
     s2 = prs.slides.add_slide(blank_layout)
     set_slide_background(s2, COLOR_BG_LIGHT)
