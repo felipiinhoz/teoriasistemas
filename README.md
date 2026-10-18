@@ -4,20 +4,6 @@ Apresentação completa de slides e roteiro acadêmico sobre a **Teoria Sistêmi
 
 ---
 
-## 👥 Integrantes da Equipe
-
-- **Cauê Oliveira Viana** (Matrícula: `202310921`)
-- **Claudio Ávila Rosa Filho** (Matrícula: `202310661`)
-- **Enzo Cardoso Ribeiro** (Matrícula: `202211355`)
-- **Gustavo Moreira dos Santos** (Matrícula: `202310663`)
-- **Iago Campos de Melo** (Matrícula: `202311585`)
-- **João Felipe Santos Matos** (Matrícula: `202310926`)
-- **João Gabryell Lopes Santana** (Matrícula: `202310927`)
-- **Kaike Santos dos Santos** (Matrícula: `202311309`)
-- **Tharcizio Rubens Santos Mota** (Matrícula: `202211373`)
-
----
-
 ## 🚀 Como Visualizar a Apresentação Web
 
 Abra o arquivo [`index.html`](index.html) no seu navegador ou publique no **GitHub Pages**:
