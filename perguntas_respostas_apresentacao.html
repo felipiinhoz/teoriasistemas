@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Guia de Perguntas e Respostas - Teoria Sistêmica</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 14mm 14mm 14mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.5;
+      font-size: 13px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .header {
+      border-bottom: 2px solid #0d9488;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-left h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .header-left .subtitle {
+      font-size: 13px;
+      color: #0d9488;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    .badge-doc {
+      display: inline-block;
+      background: #ccfbf1;
+      color: #0f766e;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .team-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+    }
+
+    .team-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px 12px;
+      font-size: 11px;
+      color: #334155;
+    }
+
+    .team-grid span strong {
+      color: #0f172a;
+    }
+
+    .intro-banner {
+      background: #f0fdfa;
+      border-left: 4px solid #0d9488;
+      padding: 9px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      color: #134e4a;
+      margin-bottom: 16px;
+    }
+
+    .qa-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .qa-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .qa-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .qa-number {
+      background: #0d9488;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .qa-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: #0f766e;
+      text-transform: uppercase;
+    }
+
+    .question {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .answer {
+      font-size: 12.5px;
+      color: #334155;
+      line-height: 1.5;
+      background: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid #cbd5e1;
+    }
+
+    .answer strong {
+      color: #0f172a;
+    }
+
+    .highlight-tip {
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: #0369a1;
+      background: #f0f9ff;
+      padding: 5px 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tips-section {
+      margin-top: 18px;
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
+      border-radius: 8px;
+      padding: 12px 14px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .tips-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #6b21a8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .tips-list {
+      padding-left: 18px;
+      font-size: 12px;
+      color: #581c87;
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      text-align: center;
+      font-size: 10.5px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <span class="badge-doc">GUIA DE APOIO ACADÊMICO</span>
+      <h1>Perguntas e Respostas da Apresentação</h1>
+      <div class="subtitle">Teoria Sistêmica na Administração • Perguntas Prováveis dos Alunos</div>
+    </div>
+    <div class="header-right">
+      <strong>Preparação para Q&A</strong><br>
+      Apresentação de Slides (12 Slides)
+    </div>
+  </div>
+
+  <div class="team-box">
+    <div class="team-title">👥 Integrantes da Equipe</div>
+    <div class="team-grid">
+      <span><strong>Cauê O. Viana</strong> (202310921)</span>
+      <span><strong>Claudio Á. Rosa Filho</strong> (202310661)</span>
+      <span><strong>Enzo C. Ribeiro</strong> (202211355)</span>
+      <span><strong>Gustavo M. dos Santos</strong> (202310663)</span>
+      <span><strong>Iago C. de Melo</strong> (202311585)</span>
+      <span><strong>João Felipe S. Matos</strong> (202310926)</span>
+      <span><strong>João Gabryell L. Santana</strong> (202310927)</span>
+      <span><strong>Kaike S. dos Santos</strong> (202311309)</span>
+      <span><strong>Tharcizio R. S. Mota</strong> (202211373)</span>
+    </div>
+  </div>
+
+  <div class="intro-banner">
+    💡 <strong>Instruções para o grupo:</strong> Estas perguntas foram selecionadas com base no nível habitual de dúvidas dos colegas de classe. Mantenham respostas concisas, firmes e usem sempre exemplos do dia a dia para demonstrar domínio prático do conteúdo.
+  </div>
+
+  <div class="qa-container">
+
+    <!-- Pergunta 1 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P1</span>
+        <span class="qa-tag">Exemplo do Cotidiano • Slide 4 e 7</span>
+      </div>
+      <div class="question">"Vocês podem dar um exemplo simples do dia a dia de uma empresa funcionando como sistema aberto?"</div>
+      <div class="answer">
+        "Com certeza! Pense em uma <strong>pizzaria ou lanchonete</strong> do bairro:<br>
+        • <strong>Entradas (Inputs):</strong> Farinha, queijo, gás, energia, equipe de atendimento e pedidos.<br>
+        • <strong>Processamento:</strong> O preparo, montagem e forno na cozinha.<br>
+        • <strong>Saídas (Outputs):</strong> A pizza entregue quentinha e a satisfação do cliente.<br>
+        • <strong>Ambiente e Feedback:</strong> A nota de avaliação no iFood, o comentário no WhatsApp e a variação do preço dos insumos no mercado. Se a pizzaria ignorar as reclamações ou não acompanhar a alta de preços do trigo, ela quebra. Ela é aberta porque vive em troca mútua com o ambiente."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Palavra-chave para memorizar:</em> Pizzaria / iFood (Entrada, Forno, Entrega e Avaliação).
+      </div>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P2</span>
+        <span class="qa-tag">Conceito Central • Slide 4</span>
+      </div>
+      <div class="question">"O que é Feedback no ciclo de um sistema e por que ele é tão importante?"</div>
+      <div class="answer">
+        "O <strong>Feedback (ou retroalimentação)</strong> é o retorno de dados e informações sobre o resultado gerado. São as notas dos clientes, relatórios financeiros de lucro/prejuízo, taxa de devolução de produtos e auditorias internas. Sem feedback contínuo, a organização <strong>navega às cegas</strong>: não consegue descobrir se o cliente gostou, se a qualidade caiu ou se precisa recalcular a rota antes de ter prejuízo."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Analogia rápida:</em> O painel de combustível e o velocímetro de um carro — sem eles, você não sabe onde ou quando vai parar.
+      </div>
+    </div>
+
+    <!-- Pergunta 3 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P3</span>
+        <span class="qa-tag">Escala e Hierarquia • Slide 5</span>
+      </div>
+      <div class="question">"Qual é a diferença prática entre Subsistema, Sistema e Supersistema?"</div>
+      <div class="answer">
+        "É uma questão de escala e foco, como bonecas russas (matrioskas):<br>
+        • <strong>Subsistema (Nível Micro):</strong> São as partes internas especializadas — Departamento Financeiro, RH, Marketing, Logística.<br>
+        • <strong>Sistema (Nível Focal):</strong> A empresa inteira como um todo articulado (ex: o Hospital, a Montadora, a Universidade).<br>
+        • <strong>Supersistema (Nível Macro):</strong> O ambiente externo onde ela opera — a economia nacional, taxas de juros, concorrentes mundiais, leis e a sociedade."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Ponto de atenção:</em> Lembre de citar que um subsistema não pode focar só na sua meta própria e prejudicar o sistema maior.
+      </div>
+    </div>
+
+    <!-- Pergunta 4 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P4</span>
+        <span class="qa-tag">Propriedades dos Sistemas • Slide 6</span>
+      </div>
+      <div class="question">"O que significa Sinergia em Administração de um jeito bem claro?"</div>
+      <div class="answer">
+        "Sinergia é o famoso princípio do <strong>'1 + 1 = 3'</strong>: o resultado do todo cooperando é significativamente maior do que a soma das partes isoladas. Quando o setor de Vendas, Marketing e TI trabalham integrados na mesma campanha, eles alcançam recordes de vendas que nenhum deles conseguiria se operassem como 'silos' independentes e incomunicáveis."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Exemplo simples:</em> Uma orquestra — o som de todos os instrumentos tocando em harmonia é infinitamente mais rico do que cada um tocando sozinho em salas separadas.
+      </div>
+    </div>
+
+    <!-- Pergunta 5 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P5</span>
+        <span class="qa-tag">Classificação • Slide 9</span>
+      </div>
+      <div class="question">"Por que vocês afirmaram que uma empresa não consegue ser um sistema fechado?"</div>
+      <div class="answer">
+        "Porque sistemas puramente fechados não trocam matéria nem energia com o exterior; eles funcionam até se esgotarem (como uma pilha selada ou um relógio). Uma empresa necessita obrigatoriamente de clientes que comprem, funcionários que trabalhem e fornecedores que entreguem. Se ela fechar os olhos para o mercado (como a <strong>Kodak</strong> fez diante das fotos digitais ou a <strong>Blockbuster</strong> diante do streaming), ela sofre de <strong>entropia</strong> e falece."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Cases para citar:</em> Kodak e Blockbuster (empresas gigantes que morreram por agirem como sistemas fechados).
+      </div>
+    </div>
+
+    <!-- Pergunta 6 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P6</span>
+        <span class="qa-tag">Tecnologia & Pessoas • Slide 10</span>
+      </div>
+      <div class="question">"O que prega a Abordagem Sociotécnica e como ela se aplica hoje em dia?"</div>
+      <div class="answer">
+        "Ela prega que toda organização possui dois subsistemas inseparáveis: o <strong>Subsistema Técnico</strong> (máquinas, IA, softwares, processos) e o <strong>Subsistema Social</strong> (pessoas, sentimentos, motivação, liderança). O segredo é a <strong>Otimização Conjunta</strong>: investir milhões no melhor software ou em robôs modernos não trará retorno se as pessoas não forem treinadas, tiverem medo da mudança ou estiverem desmotivadas."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Aplicação atual:</em> Inteligência Artificial e automação — a tecnologia só gera valor quando a equipe sabe e quer usar.
+      </div>
+    </div>
+
+    <!-- Pergunta 7 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P7</span>
+        <span class="qa-tag">História e Origem • Slide 8</span>
+      </div>
+      <div class="question">"Quem foi Ludwig von Bertalanffy e por que um biólogo influenciou a Administração?"</div>
+      <div class="answer">
+        "Bertalanffy foi o biólogo austríaco que fundou a <strong>Teoria Geral dos Sistemas (TGS)</strong> na década de 1950. Ele percebeu que a ciência tradicional separava tudo em pedacinhos, perdendo a visão do todo. Ele provou que as mesmas leis que mantêm uma célula ou o corpo humano vivos (como homeostase, trocas com o ambiente e regulação) explicam também o comportamento de organizações sociais e empresas."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Frase de efeito:</em> Bertalanffy mostrou que 'empresas não são máquinas frias, são organismos vivos'.
+      </div>
+    </div>
+
+    <!-- Pergunta 8 -->
+    <div class="qa-card">
+      <div class="qa-top">
+        <span class="qa-number">P8</span>
+        <span class="qa-tag">Comparação Histórica • Slide 3</span>
+      </div>
+      <div class="question">"A Teoria Sistêmica diz que os pioneiros clássicos (Taylor e Fayol) estavam errados?"</div>
+      <div class="answer">
+        "Não! Ela não descarta Taylor e Fayol, ela <strong>supera e integra</strong>. Os métodos de padronização, divisão de trabalho e rotina continuam essenciais no nível operacional (chão de fábrica). O que a Teoria Sistêmica corrige é o erro de achar que a empresa é apenas uma máquina interna isolada: ter o processo interno perfeito não garante sobrevivência se você não estiver atento às mudanças do mercado e do consumidor."
+      </div>
+      <div class="highlight-tip">
+        🎯 <em>Síntese:</em> Taylor e Fayol cuidam da eficiência operacional (como fazer rápido); a Sistêmica cuida da eficácia e sobrevivência global (para onde ir).
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tips-section">
+    <div class="tips-title">💡 Dicas de Sucesso para a Apresentação do Grupo</div>
+    <ul class="tips-list">
+      <li><strong>Acolha a pergunta com simpatia:</strong> Comece dizendo <em>"Excelente pergunta!"</em> ou <em>"Muito bem observado!"</em>. Isso ganha tempo para raciocinar e soa muito confiante e profissional.</li>
+      <li><strong>Dividam as respostas:</strong> Se um colega perguntar sobre o exemplo do dia a dia, um integrante responde; se perguntarem sobre teoria ou autores, outro responde. Todos demonstram domínio.</li>
+      <li><strong>Não invente se não souber um dado específico:</strong> Diga tranquilamente: <em>"Essa é uma ótima perspectiva. No escopo da nossa pesquisa focamos na aplicação estrutural, mas certamente vale aprofundar!"</em>.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    Apresentação Acadêmica sobre a Teoria Sistêmica na Administração • Slides e Roteiro Disponíveis no Repositório GitHub
+  </div>
+
+</body>
+</html>
