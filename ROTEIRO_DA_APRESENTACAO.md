@@ -22,17 +22,16 @@
 
 ---
 
-### ⏱️ Planejamento de Tempo por Slide
+### ⏱️ Planejamento de Tempo por Slide (12 Slides)
 
 | Bloco | Slides | Assunto | Tempo Sugerido |
 | :--- | :--- | :--- | :--- |
 | **Abertura** | Slide 1 & 2 | Capa e Integrantes da Equipe | 1 a 2 min |
-| **Objetivos** | Slide 3 | Por que estudar a Teoria Sistêmica | 2 min |
-| **Fundamentação** | Slide 4 & 5 | Mecanicista vs. Sistêmica e Fluxo Fundamental | 3 a 4 min |
-| **Arquitetura** | Slide 6 & 7 | Níveis Hierárquicos e Princípios Práticos | 3 a 4 min |
-| **Propriedades** | Slide 8 & 9 | Sistemas Abertos e Teóricos Históricos | 3 min |
-| **Aprofundamento** | Slide 10 & 11 | Aberto vs. Fechado e Abordagem Sociotécnica | 3 a 4 min |
-| **Prática & Fechamento**| Slide 12, 13 & 14 | Processo Decisório, Conclusão e Fontes | 2 a 3 min |
+| **Fundamentação** | Slide 3 & 4 | Mecanicista vs. Sistêmica e Fluxo Fundamental | 3 a 4 min |
+| **Arquitetura** | Slide 5 & 6 | Níveis Hierárquicos e Princípios Práticos | 3 a 4 min |
+| **Propriedades** | Slide 7 & 8 | Sistemas Abertos e Teóricos Históricos | 3 min |
+| **Aprofundamento** | Slide 9 & 10 | Aberto vs. Fechado e Abordagem Sociotécnica | 3 a 4 min |
+| **Fechamento** | Slide 11 & 12 | Conclusão e Fontes de Referência | 2 a 3 min |
 
 ---
 
@@ -52,18 +51,8 @@
 * **Objetivo do Slide:** Apresentar formalmente os acadêmicos responsáveis pela pesquisa e apresentação.
 * **O que falar:**
   > *"Esta pesquisa e apresentação foram desenvolvidas pela nossa equipe acadêmica composta por: Cauê Oliveira Viana, Claudio Ávila Rosa Filho, Enzo Cardoso Ribeiro, Gustavo Moreira dos Santos, Iago Campos de Melo, João Felipe Santos Matos, João Gabryell Lopes Santana, Kaike Santos dos Santos e Tharcizio Rubens Santos Mota.*  
-  > *Agradecemos a atenção do professor e dos colegas e damos início ao detalhamento do nosso estudo."*
+  > *Agradecemos a atenção do professor e dos colegas e damos início à nossa exposição teórica."*
 * **Tempo sugerido:** 30 segundos a 1 minuto.
-
----
-
-### **Slide 3: Por que Estudar a Teoria Sistêmica? (Objetivos)**
-* **Objetivo do Slide:** Apresentar a relevância prática e contemporânea do tema para a liderança.
-* **O que falar:**
-  > *"Por que essa teoria continua tão crucial hoje? Por três razões fundamentais:*  
-  > *1. **Visão Holística:** A palavra grega 'holos' significa todo. Líderes sistêmicos conseguem enxergar a floresta inteira, superando a miopia departamental.*  
-  > *2. **Interdependência:** Em uma organização viva, nada acontece no vácuo. Se a área Comercial lança uma superpromoção sem consultar Operações e Suprimentos, a empresa gera atrasos, ruptura de estoque e insatisfação no cliente.*  
-  > *3. **Adaptabilidade:** Em mercados hipercompetitivos, empresas que não conseguem ler as mudanças do ambiente e se reorganizar rapidamente deixam de existir."*
 
 ---
 
@@ -151,27 +140,17 @@
 
 ---
 
-### **Slide 11: Gestão Sistêmica no Processo Decisório**
-* **Objetivo do Slide:** Traduzir a teoria em ferramentas práticas para o dia a dia executivo.
-* **O que falar:**
-  > *"Como um gestor aplica tudo isso na tomada de decisão real?*  
-  > *• Primeiro: **Mapeamento Prévio de Impactos**. Antes de cortar verba ou alterar um fluxo, pergunte: 'Qual será o efeito dominó no pós-venda, na produção e na moral da equipe?'.*  
-  > *• Segundo: **Eliminação de Silos**. Promover reuniões cross-funcionais, eliminando disputas territoriais entre departamentos.*  
-  > *• Terceiro: **Alinhamento Dinâmico**. Ajustar as metas internas à realidade mutável do cliente externo."*
-
----
-
-### **Slide 12: Conclusão & Frase de Impacto**
+### **Slide 11: Conclusão & Frase de Impacto**
 * **Objetivo do Slide:** Finalizar com mensagem inspiradora e memorável.
 * **O que falar:**
   > *"Encerramos com esta reflexão fundamental:*  
   > *'A organização não é uma soma de partes isoladas, mas uma rede viva de interações contínuas.'*  
   > *Liderar com pensamento sistêmico é substituir o controle mecânico rígido pela facilitação de conexões humanas e adaptabilidade estratégica.*  
-  > *Muito obrigado pela atenção de todos! Estou aberto a perguntas, debates e considerações."*
+  > *Muito obrigado pela atenção de todos! Estamos abertos a perguntas, debates e considerações."*
 
 ---
 
-### **Slide 13: Fontes e Referências Bibliográficas**
+### **Slide 12: Fontes e Referências Bibliográficas**
 * **Objetivo do Slide:** Fornecer suporte bibliográfico para aprofundamento e responder a questionamentos da banca.
 
 ---
@@ -196,7 +175,7 @@
    - Pressione **F5** (ou `Apresentação de Slides`). No Modo Apresentador do PowerPoint, você terá na sua tela as anotações completas de cada slide enquanto a plateia vê apenas os slides em alta resolução.
 
 2. **Apresentando direto pelo Navegador Web (Sem precisar de Office):**
-   - Dê dois cliques em [`apresentacao_interativa.html`](file:///c:/Users/joao felipe/Documents/slides/apresentacao_interativa.html).
+   - Dê dois cliques em [`index.html`](file:///c:/Users/joao felipe/Documents/slides/index.html).
    - Pressione **F** para Tela Cheia.
    - Pressione **S** para abrir a gaveta de anotações com o que falar.
    - Use as setas do teclado `◀` e `▶` ou a barra de espaço para avançar os slides.

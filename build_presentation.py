@@ -211,85 +211,7 @@ Tempo estimado: 1 a 2 minutos.""")
 - Agradecemos ao professor e aos colegas pela presença e daremos início à exposição teórica.
 Tempo estimado: 30 segundos a 1 minuto.""")
 
-    # ==========================================
-    # SLIDE 3: Objetivos de Aprendizagem
-    # ==========================================
-    s2 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s2, COLOR_BG_LIGHT)
-    add_header(s2, "Objetivos de Aprendizagem", "Por que Estudar a Teoria Sistêmica?")
-
-    cards_s2 = [
-        ("Visão Holística", "Compreensão total da organização sem isolamento de setores.", "Ver o todo integrado ao invés de fragmentos desconexos. Elimina a miopia departamental.", "👁️"),
-        ("Interdependência", "Avaliação precisa dos impactos de decisões intersetoriais.", "Cada ação em vendas reverbera em produção, logística, RH e fluxo de caixa.", "🔗"),
-        ("Adaptabilidade", "Resposta rápida e contínua às transformações do mercado.", "Capacidade dinâmica de sobreviver e prosperar em ambientes de alta incerteza.", "🔄")
-    ]
-
-    card_w = Inches(3.7)
-    card_h = Inches(4.6)
-    spacing = Inches(0.3)
-    start_x = Inches(0.8)
-    top_y = Inches(1.9)
-
-    for i, (head, desc, detail, icon) in enumerate(cards_s2):
-        cx = start_x + i * (card_w + spacing)
-        # Card Background
-        card = s2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, top_y, card_w, card_h)
-        card.fill.solid()
-        card.fill.fore_color.rgb = COLOR_CARD_LIGHT
-        card.line.color.rgb = COLOR_CARD_BORDER
-        card.line.width = Pt(1.5)
-
-        # Icon circle
-        ic = s2.shapes.add_shape(MSO_SHAPE.OVAL, cx + Inches(0.4), top_y + Inches(0.4), Inches(0.7), Inches(0.7))
-        ic.fill.solid()
-        ic.fill.fore_color.rgb = COLOR_GREEN_BADGE
-        ic.line.fill.background()
-        tf_ic = ic.text_frame
-        p_ic = tf_ic.paragraphs[0]
-        p_ic.text = icon
-        p_ic.font.size = Pt(16)
-        p_ic.alignment = PP_ALIGN.CENTER
-
-        # Title
-        t_box = s2.shapes.add_textbox(cx + Inches(0.4), top_y + Inches(1.3), card_w - Inches(0.8), Inches(0.6))
-        tf_t = t_box.text_frame
-        tf_t.word_wrap = True
-        p_t = tf_t.paragraphs[0]
-        p_t.text = head
-        p_t.font.name = FONT_HEADING
-        p_t.font.size = Pt(20)
-        p_t.font.bold = True
-        p_t.font.color.rgb = COLOR_TEXT_MAIN
-
-        # Description
-        d_box = s2.shapes.add_textbox(cx + Inches(0.4), top_y + Inches(2.0), card_w - Inches(0.8), Inches(1.2))
-        tf_d = d_box.text_frame
-        tf_d.word_wrap = True
-        p_d = tf_d.paragraphs[0]
-        p_d.text = desc
-        p_d.font.name = FONT_BODY
-        p_d.font.size = Pt(14)
-        p_d.font.bold = True
-        p_d.font.color.rgb = COLOR_PRIMARY_TEAL
-
-        # Detail text
-        det_box = s2.shapes.add_textbox(cx + Inches(0.4), top_y + Inches(3.2), card_w - Inches(0.8), Inches(1.1))
-        tf_det = det_box.text_frame
-        tf_det.word_wrap = True
-        p_det = tf_det.paragraphs[0]
-        p_det.text = detail
-        p_det.font.name = FONT_BODY
-        p_det.font.size = Pt(13)
-        p_det.font.color.rgb = COLOR_TEXT_MUTED
-
-    set_speaker_notes(s2, """[ROTEIRO DE FALA - SLIDE 2: POR QUE ESTUDAR A TEORIA SISTÊMICA?]
-- Três grandes competências justificam o domínio deste tema:
-1. Visão Holística: 'Holos' vem do grego e significa 'todo'. Um gestor sistêmico não olha apenas para a sua mesa ou para a sua meta individual; ele enxerga a cadeia de ponta a ponta.
-2. Interdependência: Em uma organização, nada acontece no vácuo. Se o marketing cria uma promoção agressiva sem alinhar com operações e estoque, a empresa gera frustração no cliente e gargalos logísticos. Decisões eficazes mapeiam esses elos.
-3. Adaptabilidade: Vivemos na era da volatilidade. Empresas que se fecham em velhos manuais perecem; sistemas que escutam o ambiente e aprendem continuam evoluindo.
-Tempo estimado: 1 minuto e meio.""")
-
-    # ==========================================
+# ==========================================
     # SLIDE 3: Abordagem Sistêmica vs Tradicional
     # ==========================================
     s3 = prs.slides.add_slide(blank_layout)
@@ -999,79 +921,8 @@ Tempo estimado: 1 minuto e meio.""")
 - Não existe tecnologia que compense uma equipe desmotivada ou uma liderança tóxica. O segredo da alta performance é a 'otimização conjunta': a tecnologia deve capacitar e empoderar o ser humano, e as pessoas devem estar preparadas para extrair o melhor das máquinas.
 Tempo estimado: 2 minutos.""")
 
-    # ==========================================
-    # SLIDE 11: Gestão Sistêmica no Processo Decisório
-    # ==========================================
-    s11 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s11, COLOR_BG_LIGHT)
-    add_header(s11, "Síntese Prática", "Gestão Sistêmica no Processo Decisório")
-
-    dec_w = Inches(6.0)
-    dec_points = [
-        ("Mapeamento Prévio de Impactos", "Avaliação das consequências em cascata antes de implementar qualquer decisão estratégica (prevenção do efeito dominó)."),
-        ("Eliminação de Silos Operacionais", "Derrubada de barreiras comunicacionais e cooperação horizontal fluida entre todos os departamentos."),
-        ("Alinhamento Dinâmico com o Ambiente", "Sincronização ágil entre os objetivos internos da empresa e as demandas voláteis dos clientes e do mercado.")
-    ]
-
-    for idx, (head, text_str) in enumerate(dec_points):
-        dy = Inches(1.9) + idx * Inches(1.55)
-        dcard = s11.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), dy, dec_w, Inches(1.35))
-        dcard.fill.solid()
-        dcard.fill.fore_color.rgb = COLOR_CARD_LIGHT
-        dcard.line.color.rgb = COLOR_CARD_BORDER
-        dcard.line.width = Pt(1.5)
-
-        # Check circle
-        ck = s11.shapes.add_shape(MSO_SHAPE.OVAL, Inches(1.15), dy + Inches(0.35), Inches(0.55), Inches(0.55))
-        ck.fill.solid()
-        ck.fill.fore_color.rgb = COLOR_MINT_ACCENT
-        ck.line.fill.background()
-        p_ck = ck.text_frame.paragraphs[0]
-        p_ck.text = "✓"
-        p_ck.font.bold = True
-        p_ck.font.size = Pt(15)
-        p_ck.font.color.rgb = COLOR_TEXT_WHITE
-        p_ck.alignment = PP_ALIGN.CENTER
-
-        dt_box = s11.shapes.add_textbox(Inches(1.9), dy + Inches(0.18), dec_w - Inches(2.1), Inches(0.35))
-        p_dt = dt_box.text_frame.paragraphs[0]
-        p_dt.text = head
-        p_dt.font.name = FONT_HEADING
-        p_dt.font.size = Pt(15)
-        p_dt.font.bold = True
-        p_dt.font.color.rgb = COLOR_TEXT_MAIN
-
-        dd_box = s11.shapes.add_textbox(Inches(1.9), dy + Inches(0.55), dec_w - Inches(2.1), Inches(0.65))
-        dd_tf = dd_box.text_frame
-        dd_tf.word_wrap = True
-        dd_tf.margin_top = dd_tf.margin_bottom = 0
-        p_dd = dd_tf.paragraphs[0]
-        p_dd.text = text_str
-        p_dd.font.name = FONT_BODY
-        p_dd.font.size = Pt(12)
-        p_dd.font.color.rgb = COLOR_TEXT_MUTED
-
-    # Right: Cubes Image
-    if os.path.exists("cubes.jpg"):
-        s11.shapes.add_picture("cubes.jpg", Inches(7.2), Inches(1.9), width=Inches(5.3))
-        c_cub = s11.shapes.add_textbox(Inches(7.2), Inches(5.9), Inches(5.3), Inches(0.5))
-        p_cub = c_cub.text_frame.paragraphs[0]
-        p_cub.text = "Tomada de Decisão Sistêmica: Conectando lideranças e eliminando silos."
-        p_cub.font.size = Pt(10)
-        p_cub.font.italic = True
-        p_cub.font.color.rgb = COLOR_TEXT_MUTED
-        p_cub.alignment = PP_ALIGN.CENTER
-
-    set_speaker_notes(s11, """[ROTEIRO DE FALA - SLIDE 11: PROCESSO DECISÓRIO SISTÊMICO]
-- Como transformar a teoria em prática diária de gestão?
-- Três práticas indispensáveis:
-1. Mapeamento prévio de impactos: Antes de cortar custos ou alterar um software, o líder sistêmico pergunta: 'Quem será afetado? O atendimento ao cliente vai sofrer? O pós-venda vai travar?'. Evita-se o clássico 'remédio que mata o paciente'.
-2. Eliminação de silos: As reuniões não podem ser apenas de diretoria fechada. Criam-se equipes multidisciplinares e rituais de alinhamento entre áreas distintas.
-3. Alinhamento dinâmico: Metas internas precisam conversar com a realidade externa. Não adianta bater a meta de produzir 1 milhão de itens se o mercado mudou e não quer mais aquele modelo.
-Tempo estimado: 1 minuto e meio.""")
-
-    # ==========================================
-    # SLIDE 12: Conclusão / Frase de Impacto (Dark Theme)
+# ==========================================
+    # SLIDE 11: Conclusão / Frase de Impacto (Dark Theme)
     # ==========================================
     s12 = prs.slides.add_slide(blank_layout)
     set_slide_background(s12, COLOR_BG_DARK)
@@ -1122,7 +973,7 @@ Tempo estimado: 1 minuto e meio.""")
     p_pl.font.color.rgb = COLOR_TEXT_LIGHT_GRAY
     p_pl.alignment = PP_ALIGN.CENTER
 
-    set_speaker_notes(s12, """[ROTEIRO DE FALA - SLIDE 12: CONCLUSÃO E SÍNTESE]
+    set_speaker_notes(s12, """[ROTEIRO DE FALA - SLIDE 11: CONCLUSÃO E SÍNTESE]
 - Chegamos à conclusão da nossa apresentação com esta reflexão fundamental:
 - 'A organização não é uma soma de partes isoladas, mas uma rede viva de interações contínuas.'
 - Para quem administra, lidera ou empreende no século XXI, a Teoria Sistêmica não é apenas uma teoria de livro: é uma lente de navegação para a sobrevivência e para a alta performance.
@@ -1131,7 +982,7 @@ Tempo estimado: 1 minuto e meio.""")
 Tempo estimado: 1 a 2 minutos.""")
 
     # ==========================================
-    # SLIDE 13: Fontes e Referências
+    # SLIDE 12: Fontes e Referências
     # ==========================================
     s13 = prs.slides.add_slide(blank_layout)
     set_slide_background(s13, COLOR_BG_LIGHT)
@@ -1217,7 +1068,7 @@ Tempo estimado: 1 a 2 minutos.""")
         p_u.font.color.rgb = COLOR_PRIMARY_TEAL
         p_u.space_after = Pt(8)
 
-    set_speaker_notes(s13, """[ROTEIRO DE FALA - SLIDE 13: FONTES E REFERÊNCIAS]
+    set_speaker_notes(s13, """[ROTEIRO DE FALA - SLIDE 12: FONTES E REFERÊNCIAS]
 - Para aprofundamento, recomendamos as obras fundamentais de Bertalanffy, Churchman e Barnard, além das aplicações contemporâneas do MIT Sloan e estudos em sistemas sociotécnicos.
 - Os links e fontes visuais das ilustrações estão devidamente creditados e catalogados para consulta acadêmica.""")
 
