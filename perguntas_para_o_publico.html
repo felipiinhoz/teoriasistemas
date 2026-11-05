@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Perguntas para Debate - Teoria Sistêmica</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 12.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .header {
+      border-bottom: 2px solid #0d9488;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .header-left h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 2px;
+    }
+
+    .header-left .subtitle {
+      font-size: 12px;
+      color: #0d9488;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    .badge-doc {
+      display: inline-block;
+      background: #ccfbf1;
+      color: #0f766e;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+    }
+
+    .team-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 12px;
+    }
+
+    .team-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px 10px;
+      font-size: 10.5px;
+      color: #334155;
+    }
+
+    .team-grid span strong {
+      color: #0f172a;
+    }
+
+    .instructions-card {
+      background: #f0fdfa;
+      border-left: 4px solid #0d9488;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 11.5px;
+      color: #134e4a;
+      margin-bottom: 14px;
+    }
+
+    .questions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .q-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .q-tag-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .q-num {
+      background: #0d9488;
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .q-theme {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0f766e;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .q-slide {
+      font-size: 10px;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .q-text {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+    }
+
+    .note-lines {
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px dashed #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .note-label {
+      font-size: 9.5px;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .line {
+      height: 1px;
+      background: #e2e8f0;
+      width: 100%;
+    }
+
+    .footer {
+      margin-top: 14px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: #94a3b8;
+    }
+
+    .footer-left {
+      color: #64748b;
+    }
+
+    .footer-right strong {
+      color: #0d9488;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <span class="badge-doc">GUIA DO PARTICIPANTE • SESSÃO DE DEBATES</span>
+      <h1>Perguntas Sugeridas para a Apresentação</h1>
+      <div class="subtitle">Teoria Sistêmica na Administração: Da Visão Fragmentada ao Pensamento Integrado</div>
+    </div>
+    <div class="header-right">
+      <strong>Roteiro de Perguntas</strong><br>
+      Sessão Aberta de Dúvidas
+    </div>
+  </div>
+
+  <div class="team-box">
+    <div class="team-title">👥 Apresentado por:</div>
+    <div class="team-grid">
+      <span><strong>Cauê O. Viana</strong> (202310921)</span>
+      <span><strong>Claudio Á. Rosa Filho</strong> (202310661)</span>
+      <span><strong>Enzo C. Ribeiro</strong> (202211355)</span>
+      <span><strong>Gustavo M. dos Santos</strong> (202310663)</span>
+      <span><strong>Iago C. de Melo</strong> (202311585)</span>
+      <span><strong>João Felipe S. Matos</strong> (202310926)</span>
+      <span><strong>João Gabryell L. Santana</strong> (202310927)</span>
+      <span><strong>Kaike S. dos Santos</strong> (202311309)</span>
+      <span><strong>Tharcizio R. S. Mota</strong> (202211373)</span>
+    </div>
+  </div>
+
+  <div class="instructions-card">
+    🎤 <strong>Para a Plateia / Colegas:</strong> Sinta-se à vontade para levantar a mão e fazer qualquer uma das perguntas abaixo durante a sessão de dúvidas e considerações finais, ou utilizá-las para guiar suas anotações durante a apresentação!
+  </div>
+
+  <div class="questions-grid">
+
+    <!-- Pergunta 1 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">01</span>
+          <span class="q-theme">Exemplo Prático</span>
+        </div>
+        <span class="q-slide">Relacionado aos Slides 4 e 7</span>
+      </div>
+      <div class="q-text">"Vocês poderiam dar um exemplo simples do cotidiano de uma empresa funcionando como sistema aberto?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">02</span>
+          <span class="q-theme">Ciclo de Funcionamento</span>
+        </div>
+        <span class="q-slide">Relacionado ao Slide 4</span>
+      </div>
+      <div class="q-text">"O que é o Feedback no ciclo de um sistema e por que ele é tão crucial para a sobrevivência da organização?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Pergunta 3 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">03</span>
+          <span class="q-theme">Níveis Hierárquicos</span>
+        </div>
+        <span class="q-slide">Relacionado ao Slide 5</span>
+      </div>
+      <div class="q-text">"Qual é a diferença prática entre Subsistema, Sistema e Supersistema no ambiente de negócios?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Pergunta 4 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">04</span>
+          <span class="q-theme">Dinâmica Organizacional</span>
+        </div>
+        <span class="q-slide">Relacionado ao Slide 6</span>
+      </div>
+      <div class="q-text">"O que significa Sinergia no contexto da administração e como ela se manifesta na cooperação entre setores?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Pergunta 5 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">05</span>
+          <span class="q-theme">Classificação Sistêmica</span>
+        </div>
+        <span class="q-slide">Relacionado ao Slide 9</span>
+      </div>
+      <div class="q-text">"Por que nenhuma empresa comercial consegue sobreviver a longo prazo se tentar agir como um sistema fechado?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Pergunta 6 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">06</span>
+          <span class="q-theme">Tecnologia & Pessoas</span>
+        </div>
+        <span class="q-slide">Relacionado ao Slide 10</span>
+      </div>
+      <div class="q-text">"O que prega a Abordagem Sociotécnica e como ela se aplica atualmente diante do avanço da inteligência artificial?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Pergunta 7 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">07</span>
+          <span class="q-theme">Origem & Biologia</span>
+        </div>
+        <span class="q-slide">Relacionado ao Slide 8</span>
+      </div>
+      <div class="q-text">"Quem foi Ludwig von Bertalanffy e como a Biologia influenciou a Teoria Geral da Administração?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Pergunta 8 -->
+    <div class="q-card">
+      <div class="q-meta">
+        <div class="q-tag-group">
+          <span class="q-num">08</span>
+          <span class="q-theme">Evolução Histórica</span>
+        </div>
+        <span class="q-slide">Relacionado ao Slide 3</span>
+      </div>
+      <div class="q-text">"A Teoria Sistêmica descarta as teorias clássicas de Taylor e Fayol ou existe uma relação de continuidade e integração?"</div>
+      <div class="note-lines">
+        <span class="note-label">Espaço para anotações do ouvinte:</span>
+        <div class="line"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">Seminário Acadêmico • Teoria Geral da Administração</div>
+    <div class="footer-right">Acesse os slides online: <strong>felipiinhoz.github.io/teoriasistemas</strong></div>
+  </div>
+
+</body>
+</html>
